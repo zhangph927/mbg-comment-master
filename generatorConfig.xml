@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 指定数据库驱动的jdbc驱动jar包的位置 -->
+    <!-- 不再需要，因为 jar 包已经在 classpath 中
+    <classPathEntry location="./mysql-connector-java-5.1.40.jar" />
+    -->
+
+    <context id="DB2Tables"  targetRuntime="MyBatis3" >
+        <!-- 生成的 Java 文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 Java 代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <property name="toDelimitKeywords" value="true" />
+        <property name = "beginningDelimiter" value = "`" />
+        <property name="endingDelimiter" value="`" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- 自定义注释生成器 -->
+        <commentGenerator type="me.mizhoux.mbgcomment.MySQLCommentGenerator">
+            <property name="suppressAllComments" value="true" />
+            <property name = "suppressDate" value = "true" />
+            <property name="addRemarkComments" value="true" />
+            <property name="author" value="zph"/>
+            <property name="dateFormat" value="yyyy/MM/dd"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.6.85:3306/collaboration?characterEncoding=utf-8" userId="root" password="bw123456">
+            <!-- 设置 useInformationSchema 属性为 true -->
+            <property name="useInformationSchema" value="true" />
+            <property name="forceBigDecimals" value="false" />
+        </jdbcConnection>
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc\:mysql\://rm-2ze360focu66q6zh6.mysql.rds.aliyuncs.com\:3306/lhltest?useUnicode\=true&amp;allowMultiQueries\=true&amp;characterEncoding\=utf-8&amp;zeroDateTimeBehavior\=convertToNull&amp;autoReconnect\=true&amp;serverTimezone=GMT%2B8"
+ userId="lhltest" password="lhltest#12345">
+            &lt;!&ndash; 设置 useInformationSchema 属性为 true &ndash;&gt;
+            <property name="useInformationSchema" value="true" />
+            <property name="forceBigDecimals" value="false" />
+        </jdbcConnection>-->
+
+        <!-- 生成实体的位置 -->
+        <javaModelGenerator targetPackage="com.baiwang.cloud.common.bean.compensate" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成 Mapper XML的位置 -->
+        <sqlMapGenerator targetPackage="com.baiwang.cloud.mappers" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成 Mapper 接口 的位置 -->
+        <javaClientGenerator targetPackage="com.baiwang.cloud.mappers.compensate" type="XMLMAPPER" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 设置数据库的表名和实体类名 -->
+        <!--<table tableName="t_user" domainObjectName="User">
+            &lt;!&ndash; generatedKey用于生成生成主键的方法 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"/>
+        </table>-->
+
+        <!--<table tableName="bw_push_data_compensate_record" domainObjectName="PushDataCompensateRecord" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+            &lt;!&ndash; generatedKey用于生成生成主键的方法 &ndash;&gt;
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"/>&ndash;&gt;
+        </table>-->
+
+
+        <!--<table tableName="bw_deploy_way" domainObjectName="DeployWay" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+
+       <!-- <table tableName="bw_interface_deploy" domainObjectName="InterfaceDeploy" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+      <!--  <table tableName="tr_entity_manage" domainObjectName="EntityManage" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+        <!--<table tableName="s_settle_file" domainObjectName="SettleFile" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+        <table tableName="s_settle_match_info" domainObjectName="SettleMatchInfo" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+-->
+        <!--<table tableName="s_settlement_manage" domainObjectName="SettlementManage" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+<!--
+        <table tableName="supplier_manage" domainObjectName="SupplierManage" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+
+       <!-- <table tableName="s_consignment_sheet" domainObjectName="ConsignmentSheet" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+        <table tableName="s_order" domainObjectName="Order" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+        <table tableName="s_order_detail" domainObjectName="OrderDetail" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+         -->
+
+
+       <!-- <table tableName="v_value_manage" domainObjectName="ValueManage" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+        <table tableName="v_value_data" domainObjectName="ValueData" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+        <!--<table tableName="v_reference" domainObjectName="Reference" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+        <!--<table tableName="s_company_email" domainObjectName="CompanyEmail" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+
+
+<!--
+        <table tableName="s_settle_file" domainObjectName="SettleFile" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+        <table tableName="s_settlement_manage" domainObjectName="SettlementManage" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+        <table tableName="s_settle_match_info" domainObjectName="SettleMatchInfo" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+      <!--  <table tableName="init_config_buyer" domainObjectName="InitConfigBuyer" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+          <!--<table tableName="supplier_manage" domainObjectName="SupplierManage" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>-->
+
+          <table tableName="bw_inner_compensate_record" domainObjectName="InnerCompensateRecord" enableCountByExample="false"
+
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+
+    </context>
+
+</generatorConfiguration>

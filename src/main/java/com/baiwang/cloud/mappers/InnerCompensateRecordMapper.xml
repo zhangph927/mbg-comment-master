@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baiwang.cloud.mappers.compensate.InnerCompensateRecordMapper">
+  <resultMap id="BaseResultMap" type="com.baiwang.cloud.common.bean.compensate.InnerCompensateRecord">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="SERVICE_NAME" jdbcType="VARCHAR" property="serviceName" />
+    <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode" />
+    <result column="BUYER_TAX_NO" jdbcType="VARCHAR" property="buyerTaxNo" />
+    <result column="SELLER_TAX_NO" jdbcType="VARCHAR" property="sellerTaxNo" />
+    <result column="BUSINESS_FIELD" jdbcType="VARCHAR" property="businessField" />
+    <result column="REQUEST_PARAM" jdbcType="VARCHAR" property="requestParam" />
+    <result column="REQUEST_MODE" jdbcType="VARCHAR" property="requestMode" />
+    <result column="RESPONSE_DATA" jdbcType="VARCHAR" property="responseData" />
+    <result column="REQUEST_NUM" jdbcType="INTEGER" property="requestNum" />
+    <result column="REQUEST_TIME" jdbcType="TIMESTAMP" property="requestTime" />
+    <result column="RESULT_FLAG" jdbcType="VARCHAR" property="resultFlag" />
+    <result column="MAIL_FLAG" jdbcType="VARCHAR" property="mailFlag" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CREATE_USER_ID" jdbcType="VARCHAR" property="createUserId" />
+    <result column="CREATE_USER_NAME" jdbcType="VARCHAR" property="createUserName" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_USER_ID" jdbcType="VARCHAR" property="updateUserId" />
+    <result column="UPDATE_USER_NAME" jdbcType="VARCHAR" property="updateUserName" />
+    <result column="STAGE_TYPE" jdbcType="VARCHAR" property="stageType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SERVICE_NAME, SERVICE_CODE, BUYER_TAX_NO, SELLER_TAX_NO, BUSINESS_FIELD, REQUEST_PARAM, 
+    REQUEST_MODE, RESPONSE_DATA, REQUEST_NUM, REQUEST_TIME, RESULT_FLAG, MAIL_FLAG, CREATE_TIME, 
+    CREATE_USER_ID, CREATE_USER_NAME, UPDATE_TIME, UPDATE_USER_ID, UPDATE_USER_NAME, 
+    STAGE_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bw_inner_compensate_record
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bw_inner_compensate_record
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.baiwang.cloud.common.bean.compensate.InnerCompensateRecord">
+    insert into bw_inner_compensate_record (ID, SERVICE_NAME, SERVICE_CODE, 
+      BUYER_TAX_NO, SELLER_TAX_NO, BUSINESS_FIELD, 
+      REQUEST_PARAM, REQUEST_MODE, RESPONSE_DATA, 
+      REQUEST_NUM, REQUEST_TIME, RESULT_FLAG, 
+      MAIL_FLAG, CREATE_TIME, CREATE_USER_ID, 
+      CREATE_USER_NAME, UPDATE_TIME, UPDATE_USER_ID, 
+      UPDATE_USER_NAME, STAGE_TYPE)
+    values (#{id,jdbcType=BIGINT}, #{serviceName,jdbcType=VARCHAR}, #{serviceCode,jdbcType=VARCHAR}, 
+      #{buyerTaxNo,jdbcType=VARCHAR}, #{sellerTaxNo,jdbcType=VARCHAR}, #{businessField,jdbcType=VARCHAR}, 
+      #{requestParam,jdbcType=VARCHAR}, #{requestMode,jdbcType=VARCHAR}, #{responseData,jdbcType=VARCHAR}, 
+      #{requestNum,jdbcType=INTEGER}, #{requestTime,jdbcType=TIMESTAMP}, #{resultFlag,jdbcType=VARCHAR}, 
+      #{mailFlag,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=VARCHAR}, 
+      #{createUserName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{updateUserName,jdbcType=VARCHAR}, #{stageType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baiwang.cloud.common.bean.compensate.InnerCompensateRecord">
+    insert into bw_inner_compensate_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="serviceName != null">
+        SERVICE_NAME,
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE,
+      </if>
+      <if test="buyerTaxNo != null">
+        BUYER_TAX_NO,
+      </if>
+      <if test="sellerTaxNo != null">
+        SELLER_TAX_NO,
+      </if>
+      <if test="businessField != null">
+        BUSINESS_FIELD,
+      </if>
+      <if test="requestParam != null">
+        REQUEST_PARAM,
+      </if>
+      <if test="requestMode != null">
+        REQUEST_MODE,
+      </if>
+      <if test="responseData != null">
+        RESPONSE_DATA,
+      </if>
+      <if test="requestNum != null">
+        REQUEST_NUM,
+      </if>
+      <if test="requestTime != null">
+        REQUEST_TIME,
+      </if>
+      <if test="resultFlag != null">
+        RESULT_FLAG,
+      </if>
+      <if test="mailFlag != null">
+        MAIL_FLAG,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="createUserId != null">
+        CREATE_USER_ID,
+      </if>
+      <if test="createUserName != null">
+        CREATE_USER_NAME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="updateUserId != null">
+        UPDATE_USER_ID,
+      </if>
+      <if test="updateUserName != null">
+        UPDATE_USER_NAME,
+      </if>
+      <if test="stageType != null">
+        STAGE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="serviceName != null">
+        #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCode != null">
+        #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerTaxNo != null">
+        #{buyerTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerTaxNo != null">
+        #{sellerTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessField != null">
+        #{businessField,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParam != null">
+        #{requestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMode != null">
+        #{requestMode,jdbcType=VARCHAR},
+      </if>
+      <if test="responseData != null">
+        #{responseData,jdbcType=VARCHAR},
+      </if>
+      <if test="requestNum != null">
+        #{requestNum,jdbcType=INTEGER},
+      </if>
+      <if test="requestTime != null">
+        #{requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultFlag != null">
+        #{resultFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mailFlag != null">
+        #{mailFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUserName != null">
+        #{updateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="stageType != null">
+        #{stageType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baiwang.cloud.common.bean.compensate.InnerCompensateRecord">
+    update bw_inner_compensate_record
+    <set>
+      <if test="serviceName != null">
+        SERVICE_NAME = #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerTaxNo != null">
+        BUYER_TAX_NO = #{buyerTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerTaxNo != null">
+        SELLER_TAX_NO = #{sellerTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessField != null">
+        BUSINESS_FIELD = #{businessField,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParam != null">
+        REQUEST_PARAM = #{requestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMode != null">
+        REQUEST_MODE = #{requestMode,jdbcType=VARCHAR},
+      </if>
+      <if test="responseData != null">
+        RESPONSE_DATA = #{responseData,jdbcType=VARCHAR},
+      </if>
+      <if test="requestNum != null">
+        REQUEST_NUM = #{requestNum,jdbcType=INTEGER},
+      </if>
+      <if test="requestTime != null">
+        REQUEST_TIME = #{requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultFlag != null">
+        RESULT_FLAG = #{resultFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mailFlag != null">
+        MAIL_FLAG = #{mailFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null">
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null">
+        CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        UPDATE_USER_ID = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUserName != null">
+        UPDATE_USER_NAME = #{updateUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="stageType != null">
+        STAGE_TYPE = #{stageType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baiwang.cloud.common.bean.compensate.InnerCompensateRecord">
+    update bw_inner_compensate_record
+    set SERVICE_NAME = #{serviceName,jdbcType=VARCHAR},
+      SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      BUYER_TAX_NO = #{buyerTaxNo,jdbcType=VARCHAR},
+      SELLER_TAX_NO = #{sellerTaxNo,jdbcType=VARCHAR},
+      BUSINESS_FIELD = #{businessField,jdbcType=VARCHAR},
+      REQUEST_PARAM = #{requestParam,jdbcType=VARCHAR},
+      REQUEST_MODE = #{requestMode,jdbcType=VARCHAR},
+      RESPONSE_DATA = #{responseData,jdbcType=VARCHAR},
+      REQUEST_NUM = #{requestNum,jdbcType=INTEGER},
+      REQUEST_TIME = #{requestTime,jdbcType=TIMESTAMP},
+      RESULT_FLAG = #{resultFlag,jdbcType=VARCHAR},
+      MAIL_FLAG = #{mailFlag,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER_ID = #{updateUserId,jdbcType=VARCHAR},
+      UPDATE_USER_NAME = #{updateUserName,jdbcType=VARCHAR},
+      STAGE_TYPE = #{stageType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
